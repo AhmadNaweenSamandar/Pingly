@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questions Forum</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="questions-container">
+        <!-- Header with buttons -->
+        <div class="questions-header">
+            <h1>PingRoom</h1>
+            <div class="action-buttons">
+                <button class="post-question-btn">
+                    <i class="fas fa-plus"></i> Post a Question
+                </button>
+                <button class="pair-me-btn">
+                    <i class="fas fa-user-friends"></i> Pair Me Up
+                </button>
+            </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="filters-section">
+            <span class="filter-label">Filters</span>
+            <div class="filter-options">
+                <span class="filter-option active">All Questions</span>
+                <span class="filter-option">My Notes</span>
+                <span class="filter-option">My PairUps</span>
+            </div>
+        </div>
+
+        <!-- Questions List -->
+        <div class="questions-list">
+            <!-- Question 1 -->
+            <div class="question-card">
+                <div class="question-content">
+                    <p class="question-text">How do I implement a binary search tree in Python with O(log n) time complexity for search operations?</p>
+                </div>
+                <div class="question-footer">
+                    <div class="user-info">
+                        <div class="profile-pic">JS</div>
+                        <span class="username">JohnSmith</span>
+                    </div>
+                    <div class="question-actions">
+                        <button class="pair-me-action">
+                            <i class="fas fa-user-friends"></i> Pair Me
+                        </button>
+                        <button class="message-action">
+                            <i class="fas fa-envelope"></i> Message
+                        </button>
+                        <button class="reactions-action">
+                            <i class="fas fa-heart"></i> 12
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question-card">
+                <div class="question-content">
+                    <p class="question-text">What's the best approach to learn React.js in 2024 for someone with basic JavaScript knowledge?</p>
+                </div>
+                <div class="question-footer">
+                    <div class="user-info">
+                        <div class="profile-pic">AD</div>
+                        <span class="username">AliceDoe</span>
+                    </div>
+                    <div class="question-actions">
+                        <button class="pair-me-action">
+                            <i class="fas fa-user-friends"></i> Pair Me
+                        </button>
+                        <button class="message-action">
+                            <i class="fas fa-envelope"></i> Message
+                        </button>
+                        <button class="reactions-action">
+                            <i class="fas fa-heart"></i> 8
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question-card">
+                <div class="question-content">
+                    <p class="question-text">Can someone explain the difference between REST and GraphQL with practical examples?</p>
+                </div>
+                <div class="question-footer">
+                    <div class="user-info">
+                        <div class="profile-pic">TJ</div>
+                        <span class="username">TomJohnson</span>
+                    </div>
+                    <div class="question-actions">
+                        <button class="pair-me-action">
+                            <i class="fas fa-user-friends"></i> Pair Me
+                        </button>
+                        <button class="message-action">
+                            <i class="fas fa-envelope"></i> Message
+                        </button>
+                        <button class="reactions-action">
+                            <i class="fas fa-heart"></i> 15
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Post Question Modal -->
+<div class="modal-overlay" id="postQuestionModal">
+    <div class="modal-container">
+        <div class="modal-header">
+            <h2>Post a New Question</h2>
+            <button class="close-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="questionForm">
+                <div class="form-group">
+                    <label for="questionTitle">Title:</label>
+                    <input type="text" id="questionTitle" placeholder="Enter your question title" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Tags:</label>
+                    <div class="tags-container">
+                        <select id="questionTags" multiple>
+                            <option value="python">Python</option>
+                            <option value="java">Java</option>
+                            <option value="javascript">JavaScript</option>
+                            <option value="c++">C++</option>
+                            <option value="html">HTML</option>
+                            <option value="css">CSS</option>
+                            <option value="react">React</option>
+                            <option value="node">Node.js</option>
+                            <option value="sql">SQL</option>
+                            <option value="mongodb">MongoDB</option>
+                        </select>
+                        <div class="selected-tags" id="selectedTags"></div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="questionText">Question:</label>
+                    <textarea id="questionText" rows="5" placeholder="Write your question here..." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="questionNote">Note (Optional):</label>
+                    <textarea id="questionNote" rows="3" placeholder="Add any additional notes..."></textarea>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="cancel-btn">Cancel</button>
+                    <button type="submit" class="post-btn">Post Question</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Include your JavaScript file -->
+<script src="script.js"></script>
+</body>
+</html>
