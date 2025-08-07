@@ -9,61 +9,90 @@
     <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
-    <!-- Top Navigation Buttons -->
-    <div class="top-nav">
-        <div class="nav-btn-container">
-            <button class="nav-btn" id="postProjectBtn">
-                <i class="fas fa-plus-circle"></i>
-                <span>Post Project</span>
-            </button>
-            <button class="nav-btn" id="matchBtn">
-                <i class="fas fa-users"></i>
-                <span>Match</span>
-            </button>
-            <button class="nav-btn" id="askQuestionBtn">
-                <i class="fas fa-question-circle"></i>
-                <span>Ask Question</span>
-            </button>
-            <button class="nav-btn" id="liveCodeBtn">
-                <i class="fas fa-code"></i>
-                <span>Live Code</span>
-            </button>
-        </div>
-    </div>
+    <div class="dashboard-container">
+        <!-- Left Column (70%) -->
+        <div class="left-column">
+            <!-- Top Navigation Buttons -->
+            <div class="top-nav">
+                <button class="nav-btn active" id="postProjectBtn">
+                    <i class="fas fa-plus-circle"></i>
+                    <span>Post Project</span>
+                </button>
+                <button class="nav-btn" id="matchBtn">
+                    <i class="fas fa-users"></i>
+                    <span>Match</span>
+                </button>
+                <button class="nav-btn" id="askQuestionBtn">
+                    <i class="fas fa-question-circle"></i>
+                    <span>Ask Question</span>
+                </button>
+                <button class="nav-btn" id="liveCodeBtn">
+                    <i class="fas fa-code"></i>
+                    <span>Live Code</span>
+                </button>
+            </div>
 
-    <!-- Profile and Content Selector -->
-    <div class="content-selector">
-        <div class="profile-icon-container">
-            <div class="profile-icon" id="profileIcon">
-                <i class="fas fa-user-circle"></i>
+            <!-- Profile and Content Selector -->
+            <div class="content-selector">
+                <div class="profile-icon" id="profileIcon">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <div class="tabs-container">
+                    <div class="tab-wrapper">
+                        <div class="tab active" id="projectsTab">Projects</div>
+                        <div class="tab" id="qaTab">Q&A</div>
+                        <div class="tab-highlight"></div>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="tabs-container">
-            <div class="tabs-bar">
-                <div class="tab active" id="projectsTab">Projects</div>
-                <div class="tab" id="qaTab">Q&A</div>
-                <div class="selection-indicator"></div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Main Content Area -->
-    <div class="main-content">
-        <!-- Filter Button -->
-        <div class="filter-container">
-            <div class="filter-btn" id="filterBtn">
-                <i class="fas fa-filter"></i>
-            </div>
-            <div class="filter-options">
-                <button class="filter-option">Most Joined</button>
-                <button class="filter-option">Trending</button>
-                <button class="filter-option">Best Wished</button>
+            <!-- Main Content Area -->
+            <div class="main-content">
+                <!-- Filter Button -->
+                 <div class="filter-container">
+                    <div class="filter-btn" id="filterBtn">
+                        <i class="fas fa-filter"></i>
+                    </div>
+                    <div class="filter-options">
+                        <button class="filter-option">Most Joined</button>
+                        <button class="filter-option">Trending</button>
+                        <button class="filter-option">Best Wished</button>
+                    </div>
+                </div>
+
+                <!-- Projects Feed (Default) -->
+                <div class="content-section active" id="projectsSection">
+                    <div class="projects-feed">
+                        <!-- Project cards will be inserted here -->
+                    </div>
+                </div>
+
+                <!-- Q&A Feed (Hidden by default) -->
+                <div class="content-section" id="qaSection">
+                    <div class="qa-feed">
+                        <!-- Q&A cards will be inserted here -->
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- Projects Feed -->
-        <div class="projects-feed" id="projectsFeed">
-            <!-- Project cards will be dynamically inserted here -->
+        <!-- Right Column (30%) -->
+        <div class="right-column">
+            <!-- XP Chart -->
+            <div class="stats-card xp-chart">
+                <h3>XP Leaderboard</h3>
+                <div class="ranking-list">
+                    <!-- XP rankings will be inserted here -->
+                </div>
+            </div>
+
+            <!-- Trending Projects -->
+            <div class="stats-card trending-projects">
+                <h3>Trending Projects</h3>
+                <div class="ranking-list">
+                    <!-- Trending projects will be inserted here -->
+                </div>
+            </div>
         </div>
     </div>
 

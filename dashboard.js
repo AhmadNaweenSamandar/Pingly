@@ -16,8 +16,23 @@ document.addEventListener('DOMContentLoaded', function() {
     const projectForm = document.getElementById('projectForm');
     const tagsInput = document.querySelector('.tags-input input');
     const tagsContainer = document.querySelector('.tags-container');
-    
+    // DOM Elements
+    const tabs = document.querySelectorAll('.tab');
+    const tabHighlight = document.querySelector('.tab-highlight');
+    const contentSections = document.querySelectorAll('.content-section');
     // Sample projects data
+    const xpLeaderboard = [
+        { name: "Alex Johnson", xp: 1250 },
+        { name: "Sam Wilson", xp: 980 },
+        { name: "Taylor Smith", xp: 875 }
+    ];
+
+    const trendingProjects = [
+        { title: "AI Chatbot", joins: 42 },
+        { title: "E-commerce Platform", joins: 38 },
+        { title: "Health Tracker", joins: 35 }
+    ];
+    
     const sampleProjects = [
         {
             id: 1,
@@ -43,54 +58,104 @@ document.addEventListener('DOMContentLoaded', function() {
     function initDashboard() {
         renderProjects();
         setupEventListeners();
+        renderLeaderboard();
+        renderTrendingProjects();
+        renderQuestions();
     }
-    
-    // Render projects to the feed
+        // Render XP Leaderboard
+    function renderLeaderboard() {
+        const container = document.querySelector('.xp-chart .ranking-list');
+        container.innerHTML = xpLeaderboard.map((user, index) => `
+            <div class="ranking-item">
+                <div class="rank-number">${index + 1}</div>
+                <div>
+                    <div class="rank-name">${user.name}</div>
+                    <div class="rank-xp">${user.xp} XP</div>
+                </div>
+            </div>
+        `).join('');
+    }
+    // Render Trending Projects
+    function renderTrendingProjects() {
+        const container = document.querySelector('.trending-projects .ranking-list');
+        container.innerHTML = trendingProjects.map((project, index) => `
+            <div class="ranking-item">
+                <div class="rank-number">${index + 1}</div>
+                <div class="rank-title">${project.title}</div>
+                <div class="rank-joins">${project.joins} joins</div>
+            </div>
+        `).join('');
+    }
+    // Render Projects Feed
     function renderProjects() {
-        projectsFeed.innerHTML = '';
-        
-        sampleProjects.forEach(project => {
-            const projectCard = document.createElement('div');
-            projectCard.className = 'project-card';
-            projectCard.innerHTML = `
+        const container = document.querySelector('.projects-feed');
+        container.innerHTML = sampleProjects.map(project => `
+            <div class="project-card">
                 <div class="project-header">
                     <div class="project-avatar">
                         <i class="fas fa-user"></i>
                     </div>
                     <div class="project-details">
-                        <div class="project-title">${project.title}</div>
-                        <div class="project-description">${project.description}</div>
+                        <h4>${project.title}</h4>
+                        <p>${project.description}</p>
                     </div>
                 </div>
                 <div class="project-tags">
                     ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
                 </div>
                 <div class="project-actions">
-                    <button class="join-btn" data-project-id="${project.id}">Join (${project.joined})</button>
-                    <button class="reaction-btn" data-project-id="${project.id}">🍀 ${project.reactions}</button>
+                    <button class="join-btn">Join</button>
+                    <button class="reaction-btn">🍀</button>
                 </div>
-            `;
-            projectsFeed.appendChild(projectCard);
-        });
+            </div>
+        `).join('');
     }
     
-    // Setup all event listeners
+        // Render Q&A Feed
+    function renderQuestions() {
+        const container = document.querySelector('.qa-feed');
+        container.innerHTML = sampleQuestions.map(qa => `
+            <div class="qa-card">
+                <div class="qa-header">
+                    <div class="qa-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="qa-details">
+                        <h4>${qa.question}</h4>
+                        <p class="qa-note">${qa.note}</p>
+                    </div>
+                </div>
+                <div class="qa-actions">
+                    <button class="like-btn"><i class="far fa-thumbs-up"></i> Like</button>
+                    <button class="reply-btn"><i class="far fa-comment"></i> Reply</button>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    // Setup Event Listeners
     function setupEventListeners() {
-        // Top navigation buttons
-        [postProjectBtn, matchBtn, askQuestionBtn, liveCodeBtn].forEach(btn => {
-            btn.addEventListener('click', function() {
-                // Remove active class from all buttons
-                [postProjectBtn, matchBtn, askQuestionBtn, liveCodeBtn].forEach(b => {
-                    b.classList.remove('active');
-                });
-                
-                // Add active class to clicked button
+        // Tab Switching
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Update active tab
+                tabs.forEach(t => t.classList.remove('active'));
                 this.classList.add('active');
                 
-                // In a real app, you would load different content here
-                console.log(`Switched to ${this.querySelector('span').textContent} view`);
+                // Move highlight
+                if (this.id === 'projectsTab') {
+                    tabHighlight.style.left = '5px';
+                    document.getElementById('projectsSection').classList.add('active');
+                    document.getElementById('qaSection').classList.remove('active');
+                } else {
+                    tabHighlight.style.left = 'calc(50% + 5px)';
+                    document.getElementById('qaSection').classList.add('active');
+                    document.getElementById('projectsSection').classList.remove('active');
+                }
             });
         });
+
+
         
         // Profile icon click
         profileIcon.addEventListener('click', function() {
