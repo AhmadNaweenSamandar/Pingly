@@ -254,7 +254,7 @@
 }
 
         /* Projects Feed */
-        .projects-feed {
+        .projects-feed, .qa-feed {
             margin-top: 20px;
             display: grid;
             gap: 15px;
@@ -341,6 +341,7 @@
             font-size: 1.2rem;
             cursor: pointer;
         }
+
 
         /* Right Column Cards */
         .stats-card {

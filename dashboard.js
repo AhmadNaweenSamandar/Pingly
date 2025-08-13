@@ -26,13 +26,50 @@
                         joins: 3,
                         wishes: 12,
                         postedAt: new Date(Date.now() - 86400000) // Yesterday
+                    },
+                    {
+                        id: 3,
+                        title: "AI Chatbot for research",
+                        description: "Need researcher to work on AI algorithm.",
+                        tags: ["Python", "NLP", "AI"],
+                        author: "Mohammad",
+                        joins: 7,
+                        wishes: 12,
+                        postedAt: new Date(Date.now() - 86400004) // Yesterday
                     }
                 ],
-                questions: [],
+                questions: [
+                    {
+                        id: 1,
+                        question: "How do I use React hooks effectively?",
+                        note: "I'm new to React and confused about useEffect",
+                        author: "Beginner Dev",
+                        likes: 4,
+                        postedAt: new Date()
+                    },
+                    {
+                        id: 2,
+                        question: "Best practices for REST API authentication?",
+                        note: "Working on a Node.js backend",
+                        author: "Backend Engineer",
+                        likes: 7,
+                        postedAt: new Date(Date.now() - 86400000) // Yesterday
+                    },
+                    {
+                        id: 3,
+                        question: "what is the easiest programming language?",
+                        note: "Working AI Chatbot",
+                        author: "Mohammad",
+                        likes: 9,
+                        postedAt: new Date(Date.now() - 86400009) // Yesterday
+                    }
+                ],
                 leaderboard: [
-                    { name: "Alex Johnson", xp: 1250, badges: ["Python Pro", "React Expert"] },
+                    { name: "Mohammad", xp: 1250, badges: ["Python Pro", "React Expert"] },
                     { name: "Sam Wilson", xp: 980, badges: ["JavaScript Ninja"] },
-                    { name: "Taylor Smith", xp: 875, badges: ["CSS Wizard"] }
+                    { name: "Taylor Smith", xp: 875, badges: ["CSS Wizard"] },
+                    { name: "Alex", xp: 1300, badges: ["Project Pro"] },
+                    { name: "Taylor Smith", xp: 875, badges: ["CSS Wizard", "Python Pro"]}
                 ]
             };
 
@@ -263,15 +300,21 @@
                         postedAt: new Date()
                     };
                     
+                    //Add to state
                     state.projects.push(newProject);
-                    state.currentUser.xp += 5; // XP for posting project
+
+                    //Update XP
+                    state.currentUser.xp += 5;
                     updateLeaderboard();
+
+                    //Re-render projects
+                    renderProjects();
+                    renderTrendingProjects();
                     
                     // Reset and close
                     this.reset();
                     dom.postProjectModal.classList.remove('active');
-                    renderProjects();
-                    renderTrendingProjects();
+                    
                 });
 
                 // Join Project (delegated event)
@@ -301,6 +344,8 @@
                 document.querySelector('#joinProjectModal form')?.addEventListener('submit', function(e) {
                     e.preventDefault();
                     const projectId = parseInt(dom.joinProjectModal.dataset.projectId);
+
+                    //Find and Update the project
                     const project = state.projects.find(p => p.id === projectId);
                     
                     if (project) {
@@ -308,11 +353,13 @@
                         state.currentUser.xp += 1; // XP for joining project
                         updateLeaderboard();
                         
-                        dom.joinProjectModal.classList.remove('active');
-                        this.reset();
+                        //render project
                         renderProjects();
                         renderTrendingProjects();
                     }
+                    this.reset();
+                    dom.joinProjectModal.classList.remove('active');
+                        
                 });
 
                 // Question Form Submission
@@ -334,10 +381,12 @@
                     state.currentUser.xp += 1; // XP for asking question
                     updateLeaderboard();
                     
+                    //Render question
+                    renderQuestions();
                     // Reset and close
                     this.reset();
                     dom.askQuestionModal.classList.remove('active');
-                    renderQuestions();
+                    
                 });
 
                 // Modal Close Buttons
@@ -375,7 +424,7 @@
                 renderLeaderboard();
             }
             
-            // Add this to your JavaScript
+
 function setupFilterButton() {
     const filterBtn = document.getElementById('filterBtn');
     const filterOptions = document.querySelector('.filter-options');
