@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PingRoom - Create or Join Room</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="room-access.css">
+</head>
+<body>
+    <div class="access-container">
+        <!-- Toggle Bar -->
+        <div class="toggle-bar">
+            <div class="toggle-option active" id="createToggle">Create</div>
+            <div class="toggle-option" id="joinToggle">Join</div>
+            <div class="toggle-indicator"></div>
+        </div>
+
+        <!-- Forms Container -->
+        <div class="form-container">
+            <!-- Create Room Form -->
+            <form id="createForm" class="room-form active">
+                <div class="form-group">
+                    <label for="roomName">Room Name</label>
+                    <input type="text" id="roomName" placeholder="Enter room name" required>
+                </div>
+                <div class="form-group">
+                    <label for="createPasscode">PIN Code</label>
+                    <input type="password" id="createPasscode" placeholder="6-digit code" pattern="\d{6}" required>
+                </div>
+                <div class="form-group">
+                    <label>Invitation Method</label>
+                    <div class="invite-options">
+                        <div class="invite-option active" data-method="direct">
+                            <i class="fas fa-user-plus"></i> Direct Invite
+                        </div>
+                        <div class="invite-option" data-method="link">
+                            <i class="fas fa-link"></i> Join with Link
+                        </div>
+                        <div class="invite-option" data-method="project">
+                            <i class="fas fa-users"></i> Project Members
+                        </div>
+                    </div>
+                </div>
+                <div id="linkContainer" class="form-group hidden">
+                    <label>Share this link:</label>
+                    <div class="link-display">
+                        <input type="text" id="roomLink" readonly>
+                        <button type="button" id="copyLinkBtn"><i class="far fa-copy"></i></button>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="back-btn" id="createBackBtn">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </button>
+                    <button type="submit" class="primary-btn">
+                        <i class="fas fa-play"></i> Create Room
+                    </button>
+                </div>
+            </form>
+
+            <!-- Join Room Form -->
+            <form id="joinForm" class="room-form">
+                <div class="form-group">
+                    <label for="joinPasscode">PIN Code</label>
+                    <input type="password" id="joinPasscode" placeholder="6-digit code" pattern="\d{6}" required>
+                </div>
+                <div class="form-group">
+                    <label>Invitation Method</label>
+                    <div class="invite-options">
+                        <div class="invite-option active" data-method="direct">
+                            <i class="fas fa-user-plus"></i> Direct Invite
+                        </div>
+                        <div class="invite-option" data-method="link">
+                            <i class="fas fa-link"></i> Join with Link
+                        </div>
+                    </div>
+                </div>
+                <div id="joinLinkContainer" class="form-group hidden">
+                    <label>Paste invitation link:</label>
+                    <input type="text" id="joinRoomLink" placeholder="Paste link here">
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="back-btn" id="joinBackBtn">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </button>
+                    <button type="submit" class="primary-btn">
+                        <i class="fas fa-sign-in-alt"></i> Join Room
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="roomaccess.js"></script>
+</body>
+</html>

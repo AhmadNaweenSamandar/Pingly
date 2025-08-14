@@ -3,14 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ping Room</title>
+    <title>PingRoom | Collaborative Coding Platform</title>
     <link href="https://fonts.googleapis.com/css2?family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="live-code.css">
-    <!-- Add Monaco Editor loader -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.30.1/min/vs/loader.min.js"></script>
-    <!-- Add Socket.IO -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js"></script>
 </head>
 <body>
     <div class="curve-design"></div>
@@ -23,182 +19,13 @@
         </div>
 
         <div class="pingroom-actions">
-            <button id="createRoomBtn" class="action-btn create-btn">
+            <a href="roomaccess.html" class="action-btn create-btn">
                 <i class="fas fa-plus-circle"></i> Create Room
-            </button>
-            <button id="joinRoomBtn" class="action-btn join-btn">
+            </a>
+            <a href="roomaccess.html" class="action-btn join-btn">
                 <i class="fas fa-sign-in-alt"></i> Join Room
-            </button>
+            </a>
         </div>
     </div>
-    
-    <div id="roomSetup">
-        <div class="form-group">
-            <label for="roomName">Room Name</label>
-            <input type="text" id="roomName" placeholder="Enter a name for your room">
-        </div>
-        <div class="form-group">
-            <label for="roomPasscode">Room Passcode</label>
-            <input type="password" id="roomPasscode" placeholder="Enter 6-digit code">
-        </div>
-        <div class="form-group">
-            <label for="inviteMethod">Invite Method</label>
-            <select id="inviteMethod">
-                <option value="direct">Direct Invite</option>
-                <option value="project">Project Members</option>
-                <option value="link">Shareable Link</option>
-            </select>
-        </div>
-        <div id="projectInviteContainer" class="hidden">
-            <label for="projectSelect">Select Project</label>
-            <select id="projectSelect">
-                <option value="">-- Select Project --</option>
-            </select>
-        </div>
-        <div id="linkContainer" class="hidden">
-            <label>Share this link:</label>
-            <div class="link-display">
-                <input type="text" id="roomLink" readonly>
-                <button id="copyLinkBtn"><i class="far fa-copy"></i></button>
-            </div>
-        </div>
-        <div class="form-actions">
-            <button id="startSessionBtn" class="primary-btn">
-                <i class="fas fa-play"></i> Start Session
-            </button>
-            <button id="cancelSetupBtn" class="secondary-btn">
-                <i class="fas fa-times"></i> Cancel
-            </button>
-        </div>
-    </div>
-    
-    <div id="editorContainer">
-        <div class="editor-header">
-            <div class="room-info">
-                <h3 id="displayRoomName"></h3>
-                <button id="leaveRoomBtn" class="small-btn">
-                    <i class="fas fa-sign-out-alt"></i> Leave
-                </button>
-            </div>
-            <div class="participants">
-                <span class="participant-count">
-                    <i class="fas fa-users"></i> <span id="participantCount">1</span>
-                </span>
-            </div>
-            <div class="language-selector">
-                <select id="languageSelect">
-                    <option value="javascript">JavaScript</option>
-                    <option value="python">Python</option>
-                    <option value="html">HTML</option>
-                    <option value="css">CSS</option>
-                    <option value="typescript">TypeScript</option>
-                    <option value="java">Java</option>
-                    <option value="csharp">C#</option>
-                    <option value="php">PHP</option>
-                    <option value="ruby">Ruby</option>
-                </select>
-            </div>
-        </div>
-        <div class="editor-content">
-            <div id="codeEditor"></div>
-            <div class="editor-sidebar">
-                <div class="sidebar-tabs">
-                    <button class="tab-btn active" data-tab="chat">Chat</button>
-                    <button class="tab-btn" data-tab="files">Files</button>
-                    <button class="tab-btn" data-tab="settings">Settings</button>
-                </div>
-                <div class="tab-content active" data-tab="chat">
-                    <div id="chatMessages">
-                        <div class="system-message">Welcome to PingRoom! Start collaborating with your team.</div>
-                        <div class="chat-message">
-                            <div class="user-avatar" style="background-color: #1995AD;">JD</div>
-                            <div class="message-content">
-                                <div class="message-header">
-                                    <span class="message-sender">John Doe</span>
-                                    <span class="message-time">10:30 AM</span>
-                                </div>
-                                <div class="message-text">Hey team! I've set up the basic structure for our project. Let me know what you think.</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="chat-input">
-                        <input type="text" id="chatInput" placeholder="Type message...">
-                        <button id="sendMessageBtn"><i class="fas fa-paper-plane"></i></button>
-                    </div>
-                </div>
-                <div class="tab-content" data-tab="files">
-                    <div id="fileExplorer">
-                        <div class="file-upload-area" id="fileUploadArea">
-                            <i class="fas fa-cloud-upload-alt" style="font-size: 2rem; color: var(--teal-blue); margin-bottom: 10px;"></i>
-                            <p>Drag & drop files here or click to upload</p>
-                            <input type="file" id="fileInput" style="display: none;">
-                        </div>
-                        <div class="file-item">
-                            <div class="file-icon">
-                                <i class="fas fa-file-code"></i>
-                            </div>
-                            <div class="file-info">
-                                <div class="file-name">index.html</div>
-                                <div class="file-meta">
-                                    <span class="file-uploader">Uploaded by John</span>
-                                    <span class="file-size">12 KB</span>
-                                </div>
-                            </div>
-                            <div class="file-download">
-                                <i class="fas fa-download"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-content" data-tab="settings">
-                    <div id="roomSettings">
-                        <div class="participants-list">
-                            <h4>Room Members</h4>
-                            <div class="participant-card">
-                                <div class="participant-avatar" style="background-color: #1995AD;">JD</div>
-                                <div class="participant-name">John Doe</div>
-                                <div class="participant-role">Admin</div>
-                                <div class="participant-actions">
-                                    <div class="action-icon" title="Make Admin">
-                                        <i class="fas fa-crown"></i>
-                                    </div>
-                                    <div class="action-icon danger-action" title="Remove User">
-                                        <i class="fas fa-user-minus"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="participant-card">
-                                <div class="participant-avatar" style="background-color: #E71D36;">AS</div>
-                                <div class="participant-name">Alice Smith</div>
-                                <div class="participant-role">Member</div>
-                                <div class="participant-actions">
-                                    <div class="action-icon" title="Make Admin">
-                                        <i class="fas fa-crown"></i>
-                                    </div>
-                                    <div class="action-icon danger-action" title="Remove User">
-                                        <i class="fas fa-user-minus"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="room-actions">
-                            <button class="danger-btn">
-                                <i class="fas fa-trash"></i> Delete Room
-                            </button>
-                            <button class="danger-btn">
-                                <i class="fas fa-user-lock"></i> Change Passcode
-                            </button>
-                            <button class="danger-btn">
-                                <i class="fas fa-download"></i> Export All Code
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-<!-- Add your JavaScript at the end -->
-<script src="live-code.js"></script>
 </body>
 </html>

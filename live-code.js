@@ -57,8 +57,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Set up all event listeners
     function setupEventListeners() {
         // Room creation/joining
-        createRoomBtn.addEventListener('click', () => showRoomSetup('create'));
-        joinRoomBtn.addEventListener('click', () => showRoomSetup('join'));
+        createRoomBtn.addEventListener('click', showRoomSetup);
+        joinRoomBtn.addEventListener('click', showRoomSetup);
         startSessionBtn.addEventListener('click', handleStartSession);
         cancelSetupBtn.addEventListener('click', resetRoomSetup);
         leaveRoomBtn.addEventListener('click', leaveRoom);
@@ -110,15 +110,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Show room setup form
     function showRoomSetup(action) {
+        // Reset form first
+        resetRoomSetup();
+        
+        // Show the form
         roomSetup.style.display = 'block';
-        roomSetup.classList.add('active');
         
         if (action === 'create') {
             startSessionBtn.innerHTML = '<i class="fas fa-play"></i> Create Room';
             document.querySelector('#roomSetup .form-group:first-child label').textContent = "Room Name";
+            roomNameInput.placeholder = "Enter a name for your room";
+            inviteMethod.parentElement.style.display = 'block';
         } else {
             startSessionBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Join Room';
             document.querySelector('#roomSetup .form-group:first-child label').textContent = "Room ID";
+            roomNameInput.placeholder = "Enter room ID or paste link";
+            inviteMethod.parentElement.style.display = 'none';
         }
         updateInviteMethodUI();
     }
@@ -378,7 +385,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Reset room setup form
     function resetRoomSetup() {
         roomSetup.style.display = 'none';
-        roomSetup.classList.remove('active');
         roomNameInput.value = '';
         roomPasscode.value = '';
     }
@@ -441,7 +447,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const k = 1024;
         const sizes = ['Bytes', 'KB', 'MB', 'GB'];
         const i = Math.floor(Math.log(bytes) / Math.log(k));
-        return parseFloat((bytes / Math.pow(k, i)).toFixed(1) + ' ' + sizes[i];
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(1) + ' ' + sizes[i]);
     }
 
     // Start the application

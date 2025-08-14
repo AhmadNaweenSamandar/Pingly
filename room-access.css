@@ -1,0 +1,226 @@
+:root {
+    --teal-blue: #1995AD;
+    --light-blue: #A1D6E2;
+    --light-gray: #F1F1F2;
+    --dark-gray: #333;
+    --white: #FFFFFF;
+    --shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+    --border-radius: 8px;
+    --pill-radius: 20px;
+}
+
+body {
+    font-family: 'Quattrocento', serif;
+    background-color: #f5f7fa;
+    color: var(--dark-gray);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.access-container {
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Toggle Bar */
+.toggle-bar {
+    display: flex;
+    width: 30%;
+    position: relative;
+    margin-bottom: 10%;
+    background-color: var(--light-gray);
+    border-radius: var(--pill-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.toggle-option {
+    flex: 1;
+    text-align: center;
+    padding: 12px 0;
+    cursor: pointer;
+    font-weight: 600;
+    z-index: 1;
+    transition: var(--transition);
+}
+
+.toggle-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: var(--teal-blue);
+    border-radius: var(--pill-radius);
+    transition: var(--transition);
+    z-index: 0;
+}
+
+.toggle-option.active {
+    color: var(--white);
+}
+
+/* Form Container */
+.form-container {
+    width: 100%;
+    padding: 0 30%;
+    position: relative;
+}
+
+.room-form {
+    display: none;
+    flex-direction: column;
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.room-form.active {
+    display: flex;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--teal-blue);
+    box-shadow: 0 0 0 3px rgba(25, 149, 173, 0.2);
+}
+
+/* Invite Options */
+.invite-options {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.invite-option {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.invite-option.active {
+    border-color: var(--teal-blue);
+    background-color: rgba(25, 149, 173, 0.1);
+    color: var(--teal-blue);
+}
+
+.invite-option i {
+    font-size: 1.2rem;
+}
+
+/* Link Container */
+.link-display {
+    display: flex;
+    margin-top: 5px;
+}
+
+.link-display input {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: none;
+}
+
+#copyLinkBtn {
+    padding: 0 15px;
+    background-color: var(--teal-blue);
+    color: white;
+    border: none;
+    border-top-right-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+    cursor: pointer;
+}
+
+/* Form Actions */
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.primary-btn {
+    padding: 12px 24px;
+    background-color: var(--teal-blue);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.primary-btn:hover {
+    background-color: #147a8f;
+}
+
+.back-btn {
+    padding: 12px 24px;
+    background-color: var(--light-gray);
+    color: var(--dark-gray);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.back-btn:hover {
+    background-color: #e0e0e0;
+}
+
+/* Hidden Elements */
+.hidden {
+    display: none !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .toggle-bar {
+        width: 80%;
+    }
+    
+    .form-container {
+        padding: 0 10%;
+    }
+    
+    .invite-options {
+        flex-direction: column;
+    }
+}
