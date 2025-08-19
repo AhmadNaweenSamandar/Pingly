@@ -97,6 +97,7 @@
                 trendingList: document.querySelector('.trending-projects .ranking-list')
             };
 
+
             // Initialize modals
             function initModals() {
                 // Ask Question Modal
@@ -262,7 +263,7 @@
                 // Profile Icon - Redirect to profile page
                 dom.profileIcon.addEventListener('click', function() {
                     // In a real app, this would redirect to profile page
-                    window.location.href = 'profile.html'; // You'll need to create this page
+                    window.location.href = 'profile.html';
                 });
 
                 // Post Project Modal
@@ -275,12 +276,17 @@
                     // Add XP for matching
                     state.currentUser.xp += 2;
                     updateLeaderboard();
-                    window.location.href = 'match.html'; // You'll need to create this page
+                    window.location.href = 'matchlandingpage.html'; // You'll need to create this page
                 });
 
                 // Ask Question Modal
                 dom.askQuestionBtn.addEventListener('click', function() {
                     document.getElementById('askQuestionModal').classList.add('active');
+                });
+
+                // Live Code Button - Redirect to live coding page
+                dom.liveCodeBtn.addEventListener('click', function() {
+                    window.location.href = 'livecode.html'; // Redirect to your live coding page
                 });
 
                 // Project Form Submission

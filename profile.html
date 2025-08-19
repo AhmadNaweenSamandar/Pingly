@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pingly Profile</title>
+    <link rel="stylesheet" href="profile.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Left Profile Section (30%) -->
+    <section class="profile-section">
+        <div class="profile-pic-container">
+            <div class="profile-pic" id="profilePic">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="edit-profile-pic" id="editProfilePic">
+                <i class="fas fa-camera"></i>
+            </div>
+        </div>
+        
+        <div class="badge-container">
+            <alt="Badge" class="badge" id="profileBadge">
+        </div>
+        
+        <div class="profile-info">
+            <h2 id="profileName">Alex Johnson</h2>
+            <p id="profileRole">Frontend Developer</p>
+            <p id="profileLevel">Level 1 | 499 XP</p>
+            <p id="profileOrg">Tech University</p>
+            <p id="profilePhone">+1 (555) 123-4567</p>
+            <p id="profileEmail">alex.johnson@example.com</p>
+        </div>
+        
+        <button class="update-btn" id="updateProfileBtn">Update Profile</button>
+    </section>
+    
+    <!-- Right Content Section (70%) -->
+    <section class="content-section">
+        <!-- XP Level Card -->
+        <div class="stats-card xp-card">
+            <h3 class="card-title">XP Level</h3>
+            <div class="xp-progress-container">
+                <div class="xp-progress">
+                    <div class="xp-progress-bar"></div>
+                </div>
+                <div class="xp-level">
+                    <span>65/100 XP</span>
+                    <span>Beginner | Lvl 1</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Projects Card -->
+        <div class="stats-card projects-card">
+            <h3 class="card-title">Projects</h3>
+            <div class="projects-container">
+                <div class="projects-stats">
+                    <div class="projects-bar">
+                        <div class="projects-posted"></div>
+                        <div class="projects-joined"></div>
+                    </div>
+                    <div class="projects-legend">
+                        <div class="posted-legend">
+                            <div class="posted-color"></div>
+                            <span>7 Projects Posted</span>
+                        </div>
+                        <div class="joined-legend">
+                            <div class="joined-color"></div>
+                            <span>3 Projects Joined</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Live Code Card -->
+        <div class="stats-card live-code-card">
+            <h3 class="card-title">Live Code</h3>
+            <div class="live-code-container">
+                <div class="coding-chart">
+                    <div class="coding-hours">
+                        <span class="hour-mark">6h</span>
+                        <span class="hour-mark">5h</span>
+                        <span class="hour-mark">4h</span>
+                        <span class="hour-mark">3h</span>
+                        <span class="hour-mark">2h</span>
+                        <span class="hour-mark">1h</span>
+                        <span class="hour-mark">0h</span>
+                    </div>
+                    <div class="coding-stats" id="codingStats">
+                        <!-- JavaScript will generate the bars -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Ping Network Card -->
+        <div class="stats-card network-card" id="networkCard">
+            <h3 class="card-title">Ping Network</h3>
+            <div class="network-container">
+                <div class="network-users" id="networkUsers">
+                    <!-- JavaScript will generate the network circles -->
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Edit Profile Picture Modal -->
+    <div class="modal" id="profilePicModal">
+        <div class="modal-content">
+            <h3 class="modal-title">Update Profile Picture</h3>
+            <div class="form-group">
+                <input type="file" id="newProfilePic" accept="image/*">
+            </div>
+            <button class="btn btn-submit" id="uploadPicBtn">Upload</button>
+            <button class="btn btn-back" id="removePicBtn">Remove Picture</button>
+            <div class="modal-actions">
+                <button class="btn btn-back" id="cancelPicBtn">Cancel</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Update Profile Modal -->
+    <div class="modal" id="profileModal">
+        <div class="modal-content">
+            <h3 class="modal-title">Update Profile</h3>
+            <div class="form-group">
+                <label for="updateName">Full Name</label>
+                <input type="text" id="updateName">
+            </div>
+            <div class="form-group">
+                <label for="updateRole">Role</label>
+                <select id="updateRole">
+                    <option value="Student">Student</option>
+                    <option value="Frontend Developer">Frontend Developer</option>
+                    <option value="Backend Developer">Backend Developer</option>
+                    <option value="Full Stack Developer">Full Stack Developer</option>
+                    <option value="UX Designer">UX Designer</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="updateOrg">Organization</label>
+                <input type="text" id="updateOrg">
+            </div>
+            <div class="form-group">
+                <label for="updatePhone">Phone Number</label>
+                <input type="tel" id="updatePhone">
+            </div>
+            <div class="form-group">
+                <label for="updateEmail">Email</label>
+                <input type="email" id="updateEmail">
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-back" id="cancelProfileBtn">Back</button>
+                <button class="btn btn-submit" id="saveProfileBtn">Submit</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Network List Modal -->
+    <div class="modal" id="networkModal">
+        <div class="modal-content network-modal-content">
+            <h3 class="modal-title">Your Ping Network</h3>
+            <ul class="network-list" id="networkList">
+                <!-- JavaScript will generate the list -->
+            </ul>
+            <div class="modal-actions">
+                <button class="btn btn-submit" id="closeNetworkBtn">Back</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="profile.js"></script>
+</body>
+</html>

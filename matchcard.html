@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Matching Card</title>
+    <link rel="stylesheet" href="matchcard.css">
+</head>
+<body>
+    <div class="card-container">
+        <div class="card" id="currentCard">
+            <div class="card-inner">
+                <div class="profile-section">
+                    <div class="profile-image" id="profileImage">
+                        <i class="fas fa-user profile-icon"></i>
+                    </div>
+                </div>
+                <div class="details-section">
+                    <div class="profile-info">
+                        <div class="profile-name" id="profileName">John Doe</div>
+                        <div class="profile-role-city" id="profileRoleCity">Frontend Developer | Ottawa</div>
+                        <div class="profile-badge" id="profileBadge">JavaScript Expert</div>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn btn-match" id="matchBtn">Match</button>
+                        <i class="fas fa-star star-icon" id="saveBtn" title="Save for later"></i>
+                        <button class="btn btn-skip" id="skipBtn">Skip</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Popup for additional details -->
+    <div class="popup" id="detailsPopup">
+        <div class="popup-content">
+            <span class="close-popup" id="closePopup">&times;</span>
+            <div class="popup-section">
+                <div class="popup-title">What I work on:</div>
+                <div id="popupWork">Building responsive web applications using React and Node.js</div>
+            </div>
+            <div class="popup-section">
+                <div class="popup-title">Long-term goal:</div>
+                <div id="popupGoal">To become a full-stack architect and mentor junior developers</div>
+            </div>
+            <div class="popup-section">
+                <div class="popup-title">How I plan to achieve it:</div>
+                <div id="popupPlan">By continuously learning new technologies and contributing to open source projects</div>
+            </div>
+            <div class="popup-section">
+                <div class="popup-title">Personal character:</div>
+                <div id="popupCharacter">Detail-oriented, team player, and passionate about solving complex problems</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="matchcard.js"></script>
+</body>
+</html>
