@@ -231,7 +231,35 @@ h2 {
 /* Recruiters Section */
 .recruiters {
     background-color: var(--light-gray);
+    padding: 4rem 2rem;
     text-align: center;
+}
+
+.recruiters-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.recruiters h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    color: var(--teal-blue);
+}
+
+.recruiters-text {
+    font-size: 1.5rem;
+    color: var(--teal-blue);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.medium-text {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
 }
 
 .recruiters-images {
@@ -239,12 +267,14 @@ h2 {
     justify-content: center;
     gap: 2rem;
     margin-top: 2rem;
+    flex-wrap: wrap;
 }
 
 .recruiters-images img {
     width: 100%;
     max-width: 300px;
     border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 /* Footer */
@@ -339,8 +369,27 @@ footer {
     .social-icons {
         justify-content: center;
     }
+    .recruiters-images {
+        gap: 1.5rem;
+    }
+
+    .recruiters-images img{
+        max-width: 280px;
+
+    }
+
 }
 
+@media (max-width: 576px){
+    .recruiters-images {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .recruiters-images img{
+        max-width: 100%;
+    }
+}
 
 
 
@@ -399,7 +448,7 @@ footer {
 .dollar {
     font-size: 1.5rem;
     position: absolute;
-    left: 50%;
+    left: 37%;
     transform: translateX(-120%);
     top: 0.5rem;
 }
@@ -408,7 +457,7 @@ footer {
     font-size: 1rem;
     font-weight: 400;
     position: absolute;
-    right: 50%;
+    right: 40%;
     transform: translateX(120%);
     bottom: 1.2rem;
 }
@@ -470,22 +519,22 @@ footer {
 }
 
 .explorer-btn {
-    background-color: #A1D6E2;
-    color: var(--black);
+    background-color: var(--teal-blue);
+    color: var(--white);
 }
 
 .rising-star-btn {
-    background-color: #6FC4D9;
+    background-color: var(--teal-blue);
     color: var(--white);
 }
 
 .starter-recruiter-btn {
-    background-color: #3AB3CF;
+    background-color: var(--teal-blue);
     color: var(--white);
 }
 
 .pro-recruiter-btn {
-    background-color: #1995AD;
+    background-color: var(--teal-blue);
     color: var(--white);
 }
 
@@ -714,7 +763,7 @@ footer {
 
 .about-hero-image {
     margin: 0 auto;
-    max-width: 1200px;
+    max-width: 1000px;
     padding: 0 2rem;
 }
 
