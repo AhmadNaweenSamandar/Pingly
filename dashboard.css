@@ -86,8 +86,8 @@
         }
 
         .nav-btn.active {
-            background: var(--light-blue);
-            color: var(--dark-gray);
+            background: var(--teal-blue);
+            color: var(--white);
         }
 
         .nav-btn i {

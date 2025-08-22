@@ -8,12 +8,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
-
-
-
-
-// Login page animation code 
-
+// Login page animation code and authentication logic
 document.addEventListener('DOMContentLoaded', function() {
     const container = document.querySelector('.auth-container');
     const showSignup = document.getElementById('showSignup');
@@ -22,6 +17,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const signupForm = document.getElementById('signupForm');
     const welcomeLogin = document.getElementById('welcomeLogin');
     const welcomeSignup = document.getElementById('welcomeSignup');
+
+    // Simple user storage (in a real app, this would be a server/database)
+    let users = JSON.parse(localStorage.getItem('pinglyUsers')) || [];
 
     showSignup.addEventListener('click', function(e) {
         e.preventDefault();
@@ -49,22 +47,57 @@ document.addEventListener('DOMContentLoaded', function() {
         welcomeLogin.classList.add('active');
     });
 
+    // Login form submission
     document.getElementById('login').addEventListener('submit', function(e) {
         e.preventDefault();
-        if (grecaptcha.getResponse().length === 0) {
-            alert("Please complete the CAPTCHA!");
-            return;
+        
+        const email = this.querySelector('input[type="text"]').value;
+        const password = this.querySelector('input[type="password"]').value;
+        
+        // Check if user exists
+        const user = users.find(u => (u.email === email || u.username === email) && u.password === password);
+        
+        if (user) {
+            // Store current user in session
+            sessionStorage.setItem('currentUser', JSON.stringify(user));
+            window.location.href = "dashboard.html";
+        } else {
+            alert("Invalid credentials. Please try again.");
         }
-        window.location.href = "dashboard.html";
     });
 
+    // Signup form submission
     document.getElementById('signup').addEventListener('submit', function(e) {
         e.preventDefault();
-        if (grecaptcha.getResponse().length === 0) {
-            alert("Please complete the CAPTCHA!");
+        
+        const name = this.querySelector('input[type="text"]').value;
+        const email = this.querySelector('input[type="email"]').value;
+        const password = this.querySelector('input[type="password"]').value;
+        
+        // Check if user already exists
+        if (users.some(u => u.email === email)) {
+            alert("User with this email already exists.");
             return;
         }
+        
+        // Create new user
+        const newUser = {
+            name: name,
+            email: email,
+            password: password,
+            username: email.split('@')[0] // Simple username generation
+        };
+        
+        // Add to users array
+        users.push(newUser);
+        
+        // Save to localStorage
+        localStorage.setItem('pinglyUsers', JSON.stringify(users));
+        
         alert("Account created successfully! Please log in.");
         showLogin.click();
+        
+        // Clear the form
+        this.reset();
     });
 });
