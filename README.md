@@ -9,6 +9,8 @@ The application features a unique Toggle Architecture that allows users to switc
 
 ✨ Key Features
 
+
+
 🧩 1. Social Mode
 Designed to help you find your tribe.
 
@@ -18,8 +20,11 @@ Designed to help you find your tribe.
 
 • 💬 Matches & Chat: A dedicated section to view your successful connections and start real-time conversations.
 
+
+
 💼 2. Professional Mode
 Designed to build your portfolio and reputation.
+
 • 💡 Project Ideas Feed: A dedicated stream for posting innovation ideas and finding collaborators.
 
 • ❓ Q&A Forum: Ask questions or provide answers to earn community trust.
