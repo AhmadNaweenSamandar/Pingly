@@ -8,11 +8,13 @@ The application features a unique Toggle Architecture that allows users to switc
 2. Professional Mode: For serious academic discussion, project collaboration, and reputation building.
 
 ✨ Key Features
+
 🧩 1. Social Mode
 Designed to help you find your tribe.
 • 🃏 Matching Flip Cards: A Tinder-style interface where students can "Like" or "Ignore" potential matches based on study preferences, discipline, and profile bio.
 • 📅 Matching Schedule: A time-based matching system. Users can broadcast their specific study schedule (e.g., "Math 101 at 2 PM") and find others available for the same task at the same time.
 • 💬 Matches & Chat: A dedicated section to view your successful connections and start real-time conversations.
+
 💼 2. Professional Mode
 Designed to build your portfolio and reputation.
 • 💡 Project Ideas Feed: A dedicated stream for posting innovation ideas and finding collaborators.
