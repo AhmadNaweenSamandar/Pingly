@@ -1,5 +1,6 @@
 # Pingly
-The ultimate social work-study platform for students. > Connect socially, grow professionally.
+The ultimate social work-study platform for students. 
+Connect socially, grow professionally.
 
 📖 About The Project
 Pingly is a dual-mode platform designed to bridge the gap between social connection and professional development for university students. It addresses the isolation of studying alone while gamifying the process of professional growth.
